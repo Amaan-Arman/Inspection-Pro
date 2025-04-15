@@ -1,0 +1,6 @@
+4/10/2024 12:49:27 AM : System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at BlazeInspect.Controllers.HomeController.ResponseInsertionAndUpdation(Product model)
+4/10/2024 1:26:33 AM : System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at BlazeInspect.Controllers.HomeController.ResponseInsertionAndUpdation(Product model)
+4/10/2024 4:01:03 PM : System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at BlazeInspect.Controllers.HomeController.ResponseInsertionAndUpdation(Product model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 248

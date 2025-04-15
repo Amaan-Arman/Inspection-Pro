@@ -1,0 +1,50 @@
+﻿@model BlazeInspect.Models.Product
+@{
+    ViewBag.Title = "PartialViewReport";
+    Layout = null;
+}
+
+@*<script src="~/CRMJavaScript/Validation.js"></script>*@
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null)
+{
+    int count = 0;
+    <div class="row" ng-controller="ProductController">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="table-responsive">
+                <table id="ReprotlistTableID" class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Srerial No</th>
+                            <th>Inspection Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ReportListVB != null)
+                        {
+                            foreach (var item in ViewBag.ReportListVB)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count </td>
+                                    <td><span>@item.SerialNumber </span></td>
+                                    <td><span>@item.Date | @item.time</span></td>
+                                    <td>
+                                        <span><a href="#" title="Report Detail" style="color:black;font-size:21px" onclick="GetReport('Report Detail','@item.SerialNumber ', '@item.Date' , ' @item.time')"><i class="fa fa-info-circle" aria-hidden="true"></i></a></span>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewInternetConnection.cshtml")
+}
+@*<a href="#" title="Print" onclick="PrintforReport('Qualified Leads List', '#ColdCallingListTableID')"><em class="fa fa-xl fa-print">&nbsp;</em></a>
+<a href="#" id="QualifiedLeadsListExcelID" title="Download Excel Sheet" onclick="ExcelFuncntion('#ColdCallingListTableID', '#QualifiedLeadsListExcelID', 'Qualified Leads List')"><em class="fa fa-xl fa-file-excel-o">&nbsp;</em></a>*@

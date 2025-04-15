@@ -1,0 +1,5 @@
+4/8/2024 2:35:16 AM : System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'SPInsertion'.
+   at store.Models.CrudClass.InsertionMethod(String status, String Field, String values)
+   at BlazeInspect.Controllers.HomeController.ProductInsertionAndUpdation(Product model)
+ClientConnectionId:cb93b10a-a326-4ac6-8a2d-94b0223fbeb4
+Error Number:2812,State:62,Class:16

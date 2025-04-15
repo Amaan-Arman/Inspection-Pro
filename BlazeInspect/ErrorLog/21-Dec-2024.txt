@@ -1,0 +1,46 @@
+12/21/2024 4:49:35 AM : ZAA\HOME : System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at BlazeInspect.Models.CrudClass.CredentialSendEmail(String to_email, String name, String LoginId, String password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 1008
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 2019
+12/21/2024 4:52:42 AM : ZAA\HOME : System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at BlazeInspect.Models.CrudClass.CredentialSendEmail(String to_email, String name, String LoginId, String password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 1008
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 2019
+12/21/2024 4:58:16 AM : ZAA\HOME : System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Must issue a STARTTLS command first. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at BlazeInspect.Models.CrudClass.CredentialSendEmail(String to_email, String name, String LoginId, String password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 1015
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 2019
+12/21/2024 5:00:34 AM : ZAA\HOME : System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at BlazeInspect.Models.CrudClass.CredentialSendEmail(String to_email, String name, String LoginId, String password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 1015
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 2019
+12/21/2024 5:30:44 AM : ZAA\HOME : System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. For more information, go to
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at BlazeInspect.Models.CrudClass.CredentialSendEmail(String to_email, String name, String LoginId, String password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 1045
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 2019
+12/21/2024 5:35:22 AM : ZAA\HOME : System.Net.Mail.SmtpException: Failure sending mail. ---> System.IO.IOException: Unable to read data from the transport connection: net_io_connectionclosed.
+   at System.Net.Mail.SmtpReplyReaderFactory.ProcessRead(Byte[] buffer, Int32 offset, Int32 read, Boolean readLine)
+   at System.Net.Mail.SmtpReplyReaderFactory.ReadLines(SmtpReplyReader caller, Boolean oneLine)
+   at System.Net.Mail.SmtpReplyReaderFactory.ReadLine(SmtpReplyReader caller)
+   at System.Net.Mail.SmtpConnection.GetConnection(ServicePoint servicePoint)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   --- End of inner exception stack trace ---
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at BlazeInspect.Models.CrudClass.CredentialSendEmail(String to_email, String name, String LoginId, String password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 1045
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 2019

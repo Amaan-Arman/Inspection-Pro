@@ -1,0 +1,263 @@
+﻿@{
+    ViewBag.Title = "PartialViewModalsValidation";
+    Layout = null;
+}
+@*This project*@
+<div class="modal fade" id="fileshareModalID" data-backdrop="static" data-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="FileShareHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="FileShareModalBodyId" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" ng-click="SetShareFileFunction('#fileshareModalID')">Share</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="InspectorForwordModalID" data-backdrop="static" data-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="InspectorforwardHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="InspectorForwordModalBodyId" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" ng-click="SetInspectorForwardFunction('#InspectorForwordModalID')">Assign </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ProductDetailModalID" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProductHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="ProductDetailModalBodyId" class="modal-body">
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                       <button type="submit" class="btn btn-primary" ng-click="StartInspectionFuntion()">Start Inspection</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inspectionreportModalID" data-backdrop="static" data-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inspectionreportHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="inspectionreportModalBodyId" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="GetreportModalID" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-xl ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GetreportHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="GetreportModalBodyId" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <span><a href="#" style="color:black; font-size:22px;" title="Print" onclick="PrintforReport('Report List', '#GetReprotTableID')"><i class="fa fa-xl fa-print">&nbsp;</i></a></span> |
+                <span><a href="#" style="color: black; font-size: 22px;" id="GetReportExcelID" title="Download Excel Sheet" onclick="ExcelFuncntion('#GetReprotTableID', '#GetReportExcelID', 'Report List')"> <i class="fa fa-xl fa-file-excel-o">&nbsp;</i></a></span>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inspectionsaveModalID" data-backdrop="static" data-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inspectionsaveHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="inspectionsaveModalBodyId" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button onclick="reportsubmit()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade" id="QRCodeModalID" data-backdrop="static" data-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="QRCodeHeading"></h5>
+                    <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color:red;">&times;</span>
+                    </p>
+                </div>
+                <div id="QRCodeModalBodyId" class="modal-body">
+                    <img src="~/QRCodeImages/" />
+                </div>
+                <div class="modal-footer">
+                    <span><a href="#" style="color:black; font-size:30px;" title="Print" onclick="PrintforReport('Report List', '#QRCodeModalBodyId')"><i class="fa fa-xl fa-print">&nbsp;</i></a></span> |
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="modal fade" id="intromodel" data-backdrop="static" data-keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="intromodelHeading">Welcome to Blaze Inspect Pro..!</h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="intromodellBodyId" class="modal-body">
+                <p>
+                    Welcome to our cutting-edge inspection management application—a comprehensive solution tailored to streamline and enhance your product inspection process. Our platform empowers you to conduct thorough inspections with ease through QR code scanning, providing instant access to detailed reports and advanced dashboard analytics for insightful decision-making.
+                </p>
+
+                <p>
+                    Collaboration is seamless with our built-in communication tools, allowing users to chat in real-time and stay aligned throughout the inspection process. Additionally, our app offers robust management features, enabling you to customize and oversee inspection questions, assign user roles, and efficiently manage your entire product portfolio.
+                </p>
+                <p>
+                    Experience a new level of control and precision in your inspection workflows, ensuring your operations are both efficient and effective. Welcome to the future of product inspection management.
+                </p>
+            </div>
+            <div class="modal-footer">
+                @*<span><a href="#" style="color:black; font-size:30px;" title="Print" onclick="PrintforReport('Report List', '#QRCodeModalBodyId')"><i class="fa fa-xl fa-print">&nbsp;</i></a></span>*@ |
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*This project*@
+
+
+<!--Prduct Modal-->
+<div class="modal fade" id="PrductEditModalID" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PrductHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="PrductEditModalbodyID" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <a title="Update" class="btn btn-info" ng-click="SetProductEditedFunction('#PrductEditModalID')">Update</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Prduct Modal-->
+<!--Question Modal-->
+<div class="modal fade" id="QuestionEditModalID" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="QuestionHeading"></h5>
+                <p type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color:red;">&times;</span>
+                </p>
+            </div>
+            <div id="QuestionEditModalbodyID" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                @*<a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-success" onclick="DeletePerson()">Confirm</a>*@
+                <a title="Update" class="btn btn-info" ng-click="SetQuestionEditedFunction('#QuestionEditModalID')">Update</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Question Modal-->
+
+
+@if (TempData["NetVarification"] == "UnConnected")
+{
+    <div class="container" style="text-align: center ;transform: translate(30px, 100px);">
+        <h2 style="color:#f77676;letter-spacing: 0.1em;">Error Code : 505 & 404</h2>
+        <img src="~/admin_assets/images/internetimage.png" class="image" />
+        <h3 style="margin-top:-1%;"><strong>There is no Internet Connection</strong> </h3>
+        <a class="btn btn-danger" onclick="retry()">Retry</a>
+    </div>
+}
+else if (TempData["DbVarification"] == "UnConnected")
+{
+<div class="container" style="text-align:center">
+    <h2 style="color:#f77676;letter-spacing: 0.1em;">Error Code : 40</h2>
+    <img src="~/admin_assets/images/databaseerror.png" class="image"/>
+    <h3 style="margin-top:-1%;"><strong>Database Connection has Failed </strong> </h3>
+    <a class="btn btn-danger" onclick="retry()">Retry</a>
+</div>
+}
+else if (TempData["ExceptionError"] == "ExceptionError")
+{
+<div class="container" style="text-align:center">
+    <h2 style="color:#f77676;letter-spacing: 0.1em; padding-top:2%;"><strong>Exception Error</strong> </h2>
+    <img src="~/admin_assets/images/record.gif"  class="image"/>
+    @*<h3 style="margin-top:-1%;"><strong>Attendance Record not fund by Attendance Machine</strong> </h3>*@
+    <br /><br />
+    <a class="btn btn-danger" onclick="retry()">Retry</a>
+</div>
+}
+<script>
+ 
+    var retry = function () {
+        debugger
+        location.reload();
+    }
+    
+</script>
+<style>
+    .image {
+        width: 50%;
+        height: 30%;
+        /*position:fixed;*/
+        top: 0px;
+        left: 0px;
+        margin-top: -5%;
+        /*z-index:1;*/
+    }
+</style>
+<input type="hidden" id="hiddenID" />
+<input type="hidden" id="hiddenTitle" />
+<!--<div style="text-align:center" class="imageLoadinng">
+    <img class="loaderApro" src="~/image/Free-Loading-GIF-Icons.gif" />-->
+@*<p style="color:#30a5ff; ">Please wait....</p>*@
+<!--</div>-->

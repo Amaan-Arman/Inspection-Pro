@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "PartialViewInternetConnection";
+    Layout = null;
+}
+@if (TempData["NetVarification"] == "UnConnected")
+{
+    <div class="container" style="text-align:center">
+        <h2 style="color:#f77676;letter-spacing: 0.1em;">Error Code : 505 & 404</h2>
+        <img class="image" src="~/image/internetimage.png" />
+        <h3 style="margin-top:-1%;"><strong>There is no Internet Connection</strong> </h3>
+        <a class="btn btn-danger" onclick="retry()">Retry</a>
+    </div>
+}
+else if (TempData["DbVarification"] == "UnConnected")
+{
+    <div class="container" style="text-align:center">
+        <h2 style="color:#f77676;letter-spacing: 0.1em;">Error Code : 40</h2>
+        <img class="image" src="~/image/databaseerror.png" />
+        <h3 style="margin-top:-1%;"><strong>Database Connection has Failed </strong> </h3>
+        <a class="btn btn-danger" onclick="retry()">Retry</a>
+    </div>
+}
+else if (TempData["AMDataRead"] == "NotRead")
+{
+    <div class="container" style="text-align:center">
+        <h2 style="color:#f77676;letter-spacing: 0.1em; ">Error Code : 404</h2>
+        <img class="images" src="~/image/record.gif" />
+        <h3 style="margin-top:-1%;"><strong>Attendance Record not fund by Attendance Machine</strong> </h3>
+        <a class="btn btn-danger" onclick="retry()">Retry</a>
+    </div>
+}
+else if (TempData["AMVarification"] == "UnConnected")
+{
+    <div class="container" style="text-align:center">
+        <h2 style="color:#f77676;letter-spacing: 0.1em;">Error Code : 10054</h2>
+        <img  src="~/image/AMConnectionFail.gif" class="images" />
+        <h3 style="margin-top:-1%;"><strong>Attendance Machine Connection has Failed </strong> </h3>
+        <a class="btn btn-danger" onclick="retry()">Retry</a>
+    </div>
+}
+<script>
+    var retry=function()
+    {
+        location.reload();
+    }
+</script>
+<style>
+    .image
+    {     width:50%;
+				height:30%;
+				/*position:fixed;*/
+				top:0px;
+				left:0px;
+                margin-top:-5%;
+				/*z-index:1;*/
+
+    }
+     .images
+    {     width:50%;
+				height:25%;
+				/*position:fixed;*/
+				top:0px;
+				left:0px;
+                margin-top:0%;
+				/*z-index:1;*/
+
+    }
+</style>
+
+

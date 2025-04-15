@@ -1,0 +1,32 @@
+﻿@model BlazeInspect.Models.login
+@{
+    ViewBag.Title = "PartialViewReport";
+    Layout = null;
+}
+
+@*<script src="~/CRMJavaScript/Validation.js"></script>*@
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null)
+{
+    <div class="row" ng-controller="ProductController">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+                <label>Inspector List</label>
+                @Html.DropDownListFor(model => model.user_credential_id, ViewBag.InspectorListVB as SelectList, "Inspector List", new { @class = "form-control ", id = "cc_Forward_to", @tabindex = 1 })
+                <span id="cc_Forward_to_errormessage" class="small text-danger"></span>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+                <label>Set Inspection Date</label>
+                @Html.TextBoxFor(model => model.Set_inspection_date, new { @class = "form-control fieldwidth", type = "date", id = "Set_inspection_date", @tabindex = 2 })
+                <span id="set_inspection_date_errormessage" class="small text-danger"></span>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewInternetConnection.cshtml")
+}
+@*<a href="#" title="Print" onclick="PrintforReport('Qualified Leads List', '#ColdCallingListTableID')"><em class="fa fa-xl fa-print">&nbsp;</em></a>
+    <a href="#" id="QualifiedLeadsListExcelID" title="Download Excel Sheet" onclick="ExcelFuncntion('#ColdCallingListTableID', '#QualifiedLeadsListExcelID', 'Qualified Leads List')"><em class="fa fa-xl fa-file-excel-o">&nbsp;</em></a>*@

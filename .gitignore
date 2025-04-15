@@ -1,0 +1,78 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# Uncomment if you have tasks that create the project's static files in wwwroot
+# wwwroot/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Templated config files
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Others
+*.dbmdl
+*.bak
+*.mdf
+*.ldf
+
+# VS Code settings
+.vscode/
+
+# Rider
+.idea/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Web config transforms
+*.csproj.user
+*.dbmdl
+
+# IIS Express
+.vs/
+*.iisproj
+*.vspscc
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+# Recycle Bin used by Windows
+$RECYCLE.BIN/
+
+# Packages
+*.nupkg
+packages/
+!**/packages.config
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

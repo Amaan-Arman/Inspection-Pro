@@ -1,0 +1,30 @@
+7/1/2024 5:35:25 PM : System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value '0000-00-00' to data type int.
+   at store.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 775
+   at BlazeInspect.Controllers.HomeController.GetReport(String SN, String DT) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 704
+ClientConnectionId:29e15d8f-dd70-47d1-be2a-ab54d3e12036
+Error Number:245,State:1,Class:16
+7/1/2024 5:35:55 PM : System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value '0000-00-00' to data type int.
+   at store.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 775
+   at BlazeInspect.Controllers.HomeController.GetReport(String SN, String DT) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 704
+ClientConnectionId:29e15d8f-dd70-47d1-be2a-ab54d3e12036
+Error Number:245,State:1,Class:16
+7/1/2024 5:36:53 PM : System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value '0000-00-00' to data type int.
+   at store.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 775
+   at BlazeInspect.Controllers.HomeController.GetReport(String SN, String DT) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 704
+ClientConnectionId:ba939a0d-63b2-4736-8776-926947361322
+Error Number:245,State:1,Class:16
+7/1/2024 5:38:24 PM : System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value '0000-00-00' to data type int.
+   at store.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime)
+   at BlazeInspect.Controllers.HomeController.GetReport(String SN, String DT)
+ClientConnectionId:ba939a0d-63b2-4736-8776-926947361322
+Error Number:245,State:1,Class:16
+7/1/2024 5:41:41 PM : System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value '0000-00-00' to data type int.
+   at store.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime)
+   at BlazeInspect.Controllers.HomeController.GetReport(String SN, String DT)
+ClientConnectionId:ba939a0d-63b2-4736-8776-926947361322
+Error Number:245,State:1,Class:16
+7/1/2024 5:46:47 PM : System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value '0000-00-00' to data type int.
+   at store.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime)
+   at BlazeInspect.Controllers.HomeController.GetReport(String SN, String DT)
+ClientConnectionId:ba939a0d-63b2-4736-8776-926947361322
+Error Number:245,State:1,Class:16

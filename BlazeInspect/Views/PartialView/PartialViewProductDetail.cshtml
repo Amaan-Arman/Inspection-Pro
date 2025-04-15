@@ -1,0 +1,113 @@
+﻿@model BlazeInspect.Models.Product
+
+@{
+    ViewBag.Title = "PartialViewProductDetail";
+}
+<style>
+    h4 {
+        font-family: Arial;
+        font-size: 15px;
+    }
+</style>
+
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null)
+{
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            @if (ViewBag.ProductDetailVB != null && ViewBag.ProductDetailVB.Count > 0)
+            {
+                foreach (var item in ViewBag.ProductDetailVB)
+                {
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6 ">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Serial Number:</p>
+                            <p><strong>@item.SerialNumber</strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Location_ :</p>
+                            <p><strong>@item.Location_ </strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Type :</p>
+                            <p><strong>@item.Type</strong> </p>
+                        </div>
+                        @*</div>
+                            <div class="row">*@
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Capacity :</p>
+                            <p><strong>@item.Capacity</strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Manufacturer :</p>
+                            <p><strong>@item.Manufacturer</strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Date_of_Manufacture :</p>
+                            <p><strong>@item.Date_of_Manufacture</strong> </p>
+                        </div>
+                        @*</div>
+                            <div class="row">*@
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Last Inspection Date :</p>
+                            <p><strong>@item.Last_Inspection_Date</strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Status :</p>
+                            <p><strong>@item.Status</strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Remarks :</p>
+                            <p><strong>@item.Remarks</strong> </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Date | Time :</p>
+                            <p><strong>@item.Date </strong> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-6">
+                            <p style="padding-bottom:0px;margin-bottom:0px;">Generate by :</p>
+                            <p><strong> test </strong> </p>
+                        </div>
+                    </div>
+
+                }
+            }
+            else
+            {
+                <p class="text-center">This Product is not Assign you..!</p>
+            }
+        </div>
+    </div>
+    if (ViewBag.ProductDetailVB != null && ViewBag.ProductDetailVB.Count > 0)
+    {
+        foreach (var item in ViewBag.ProductDetailVB)
+        {
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">
+                <a href="/Home/Inspection_Form/@item.SerialNumber">Start Inspection</a>
+            </button>
+        </div>
+        }
+    }
+    else
+    {
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    }
+}
+
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewInternetConnection.cshtml")
+}
+@*<script>
+        $(document).keypress(function (e) {
+            if (e.which == 13)
+            {
+                $("#editiednewShiftBtn_ID").click();
+            }
+        });
+    </script>*@

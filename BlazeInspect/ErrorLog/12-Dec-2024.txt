@@ -1,0 +1,2 @@
+12/12/2024 9:28:53 PM : System.NullReferenceException: Object reference not set to an instance of an object.
+   at BlazeInspect.Controllers.HomeController.SaveFile(Filemanager model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 260

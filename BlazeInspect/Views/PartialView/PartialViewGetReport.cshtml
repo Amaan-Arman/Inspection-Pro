@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "PartialViewReport";
+    Layout = null;
+}
+
+
+<style>
+    @@media print {
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        .header, .footer {
+            text-align: center;
+            width: 100%;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            border-top: 2px solid #000;
+            padding-top: 10px;
+        }
+
+        .no-print {
+            display: none;
+        }
+    }
+</style>
+@*<script src="~/CRMJavaScript/Validation.js"></script>*@
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null)
+{
+    int count = 0;
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="table-responsive">
+                <table id="GetReprotTableID" class="table table-hover table-striped table-vcenter mb-0 text-nowrap " style="overflow-y:auto">
+                    <thead>
+                        <tr>
+                            <th><strong>Product Detail</strong></th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Serial No </th>
+                            <th>Location  </th>
+                            <th>Type  </th>
+                            <th>Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.ProductDetailVB != null)
+                        {
+                            foreach (var item in ViewBag.ProductDetailVB)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count </td>
+                                    <td><span>@item.SerialNumber </span></td>
+                                    <td><span>@item.Location_ </span></td>
+                                    <td><span>@item.Type </span></td>
+                                    <td><span>@item.Capacity </span></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th><strong>Report Detail</strong></th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Questions </th>
+                            <th>Response</th>
+                            <th>Commments</th>
+                            <th>Date | Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.GetReportVB != null)
+                        {
+                            foreach (var item in ViewBag.GetReportVB)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count </td>
+                                    <td><span>@item.QuestionText </span></td>
+                                    <td><span>@item.ResponseText </span></td>
+                                    <td><span>@item.CommentText </span></td>
+                                    <td><span>@item.date | @item.time</span></td>
+                                    @*<td><span><i class="fa fa-print fs-5 " aria-hidden="true"></i></span> | <span><i class="fa fa-file-excel-o" aria-hidden="true"></i></span></td>*@
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewInternetConnection.cshtml")
+}
+@*<a href="#" title="Print" onclick="PrintforReport('Qualified Leads List', '#ColdCallingListTableID')"><em class="fa fa-xl fa-print">&nbsp;</em></a>
+    <a href="#" id="QualifiedLeadsListExcelID" title="Download Excel Sheet" onclick="ExcelFuncntion('#ColdCallingListTableID', '#QualifiedLeadsListExcelID', 'Qualified Leads List')"><em class="fa fa-xl fa-file-excel-o">&nbsp;</em></a>*@

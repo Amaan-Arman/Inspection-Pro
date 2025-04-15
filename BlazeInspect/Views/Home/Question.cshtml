@@ -1,0 +1,168 @@
+﻿@model BlazeInspect.Models.Question
+@{
+    ViewBag.Title = "Question";
+}
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null && TempData["trailVerion"] == null)
+{
+    <div class="page" ng-controller="QuestionController">
+        @Html.Partial("~/Views/PartialView/PartialViewHeader.cshtml")
+
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex justify-content-between mb-2">
+                                    <ul class="nav nav-tabs b-none">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i> Question List</a></li>
+                                        @if ((int)TempData["Question_can_create"] == 1)
+                                        {
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
+                                        }
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="container-fluid">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="list" role="tabpanel">
+                        <div class="row clearfix">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Question List</h3>
+                                        <div class="card-options ">
+                                            @if ((int)TempData["Question_can_update"] == 1)
+                                            {
+                                                <a title="Edit" id="QBtn_id" ng-click="QuestionEditedFunction('#QuestionEditModalbodyID','#QuestionEditModalID','Edit Question ')"><i class="fa fa-xl fa-pencil-square-o" aria-hidden="true"></i>  </a>
+                                            }
+                                            @if ((int)TempData["Question_can_delete"] == 1)
+                                            {
+                                                <a title="Delete" id="QBtn_id" ng-click="QDeleteFunction()"><i class="fa fa-xl fa-trash" aria-hidden="true"></i>  </a>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="w30">&nbsp;</th>
+                                                        <th>S.no</th>
+                                                        <th>Title</th>
+                                                        <th>First option</th>
+                                                        <th>Second option</th>
+                                                        <th>Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="c in GetQuestionList">
+                                                        <td>
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" type="checkbox" id="checkbox_id" name="Checkbox" value="{{c.QuestionID}}">
+                                                                <span class="custom-control-label">&nbsp;</span>
+                                                            </label>
+                                                        </td>
+                                                        <td>{{$index+1}}</td>
+                                                        <td><span>{{c.QuestionText}}</span></td>
+                                                        <td><span>{{c.first_opt}}</span></td>
+                                                        <td><span>{{c.second_opt}}</span></td>
+                                                        <td><span>{{c.date}}</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="addnew" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Add Questions</h3>
+                                        <div class="card-options ">
+                                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
+                                        </div>
+                                    </div>
+                                    <form class="card-body">
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Question</label>
+                                                    @Html.TextBoxFor(model => model.QuestionText, new { @class = "form-control fieldwidth", id = "Question_ID", @tabindex = 1 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>First Option </label>
+                                                    @Html.TextBoxFor(model => model.first_opt, new { @class = "form-control fieldwidth", id = "First_ID", @tabindex = 2 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Second Option</label>
+                                                    @Html.TextBoxFor(model => model.second_opt, new { @class = "form-control fieldwidth", id = "Second_ID", @tabindex = 3 })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <button type="submit" ng-click="QuestionInsertionFunction()" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <a href="">The Inspection Pro</a>
+                        </div>
+                        @*<div class="col-md-6 col-sm-12 text-md-right">
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item"><a href="doc/index.html">Documentation</a></li>
+                                    <li class="list-inline-item"><a href="javascript:void(0)">FAQ</a></li>
+                                    <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-outline-primary btn-sm">Buy Now</a></li>
+                                </ul>
+                            </div>*@
+                    </div>
+                </div>
+            </footer>
+        </div>
+        @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+
+    </div>
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+}
+<script>
+    $(document).ready(function () {
+        $("#Questions").addClass("active");
+
+    });
+</script>
+
+<script src="~/admin_assets/bundles/lib.vendor.bundle.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/ControllerScripts/QuestionController.js"></script>
+
+

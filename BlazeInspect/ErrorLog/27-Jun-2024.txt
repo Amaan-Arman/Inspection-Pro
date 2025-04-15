@@ -1,0 +1,2 @@
+6/27/2024 6:42:45 PM : System.NullReferenceException: Object reference not set to an instance of an object.
+   at BlazeInspect.Controllers.HomeController.MarkasRead(String ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 112

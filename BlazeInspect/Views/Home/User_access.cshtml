@@ -1,0 +1,201 @@
+﻿@model BlazeInspect.Models.login
+@{
+    ViewBag.Title = "User Credentals";
+}
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null && TempData["trailVerion"] == null)
+{
+    <div class="page" ng-controller="UserCredentialController">
+        @Html.Partial("~/Views/PartialView/PartialViewHeader.cshtml")
+
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex justify-content-between mb-2">
+                                    <ul class="nav nav-tabs b-none">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i> User List</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New User</a></li>
+                                    </ul>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-lg-8 col-md-4 col-sm-6">
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" placeholder="Category Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-4 col-sm-12">
+                                        <a href="javascript:void(0);" class="btn btn-primary btn-block mb-1" title="">Search</a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="container-fluid">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="list" role="tabpanel">
+                        <div class="row clearfix">
+                            @*<div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 col-md-4 col-sm-6">
+                                                    <a href="javascript:void(0);" class="btn btn-primary btn-block" title="">Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">User List</h3>
+                                        <div class="card-options ">
+                                            @*<a title="Edit" id="QBtn_id" ng-click="QuestionEditedFunction('#QuestionEditModalbodyID','#QuestionEditModalID','Edit Question ')"><i class="fa fa-xl fa-pencil-square-o" aria-hidden="true"></i>  </a>*@
+                                            <a title="Delete" id="userBtn_id" ng-click="UserDeleteFunction()"><i class="fa fa-xl fa-trash" aria-hidden="true"></i>  </a>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th class="w30">&nbsp;</th>
+                                                    <th>S.No</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>phone No</th>
+                                                    <th>Login Type</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="c in GetMemberUserAccess">
+                                                    <td>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" type="checkbox" id="checkbox_id" name="Checkbox" value="{{c.user_credential_id}}">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                        </label>
+                                                    </td>
+                                                    <td>{{$index+1}}</td>
+                                                    <td><span>{{c.user_name}}</span></td>
+                                                    <td><span>{{c.email}}</span></td>
+                                                    <td><span>{{c.user_mobileNo}}</span></td>
+                                                    <td><span>{{c.login_type}}</span></td>
+                                                    <td>{{c.date}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="addnew" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Add User</h3>
+                                        <div class="card-options ">
+                                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
+                                            @*<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>*@
+                                        </div>
+                                    </div>
+                                    <form class="card-body">
+                                        <div class="row clearfix">
+                                            <div class="col-md-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>User Name</label>
+                                                    @Html.TextBoxFor(model => model.user_name, new { @class = "form-control fieldwidth", @onkeypress = "return lettersOnly(event)", id = "user_name_id", @tabindex = 1 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Email Address</label>
+                                                    @Html.TextBoxFor(model => model.email, new { @class = "form-control fieldwidth", id = "email_id", @onkeypress = "return emailformateV(event)", @tabindex = 2 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Phone</label>
+                                                    @Html.TextBoxFor(model => model.user_mobileNo, new { @class = "form-control fieldwidth", @onkeypress = "return NumberOnly(event)", id = "user_mobileNo_id", @tabindex = 3, @maxlength = "11" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>login ID</label>
+                                                    @Html.TextBoxFor(model => model.login_id, new { @class = "form-control fieldwidth", @onkeypress = "return letterswithDot(event)", id = "login_id", @tabindex = 4 })
+                                                </div>
+                                            </div>
+                                            @*<div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    @Html.TextBoxFor(model => model.password, new { @class = "form-control fieldwidth", @onkeypress = "return letterswithDot(event)", id = "password_id", @tabindex = 4 })
+                                                </div>
+                                            </div>*@
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>login Type</label>
+                                                    @Html.DropDownListFor(model => model.login_type_id, ViewBag.loginTypeVB as SelectList, "Login Type", new { @class = "form-control chzn-select fieldwidth", id = "loginType_id", @tabindex = 5 })
+                                                </div>
+                                            </div>
+                                            @*<div class="col-md-3 col-sm-12">
+                                                    <label>Gender</label>
+                                                    <select class="form-control show-tick">
+                                                        <option value="">-- Gender --</option>
+                                                        <option value="10">Male</option>
+                                                        <option value="20">Female</option>
+                                                    </select>
+                                                </div>*@
+                                            <div class="col-sm-12">
+                                                <button type="submit" ng-click="MemberCredentialFunction()" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <a href="">The Inspection Pro</a>
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+}
+<script src="~/admin_assets/bundles/lib.vendor.bundle.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/ControllerScripts/UserCredentialController.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#User_access").addClass("active");
+
+    });
+</script>

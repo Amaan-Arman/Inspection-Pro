@@ -1,0 +1,8 @@
+6/5/2024 3:45:58 PM : ZAA\HOME : System.FormatException: Input string was not in a correct format.
+   at store.Models.CrudClass.loginSession(String status, String LoginID, String Password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 912
+   at BlazeInspect.Controllers.HomeController.GetMemberUserAccess() in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 880
+6/5/2024 3:48:37 PM : ZAA\HOME : System.FormatException: Input string was not in a correct format.
+   at store.Models.CrudClass.loginSession(String status, String LoginID, String Password) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 912
+   at BlazeInspect.Controllers.HomeController.GetMemberUserAccess() in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 880
+6/5/2024 3:57:37 PM : ZAA\HOME : System.NullReferenceException: Object reference not set to an instance of an object.
+   at BlazeInspect.Controllers.HomeController.setEditMemberCredential(login model) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 833

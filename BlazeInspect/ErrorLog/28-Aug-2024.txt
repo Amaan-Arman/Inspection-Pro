@@ -1,0 +1,3 @@
+8/28/2024 5:23:55 PM : System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at BlazeInspect.Models.CrudClass.SelectProduct(String status, String id, String start_date, String end_date, String datetime) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Models\CrudClass.cs:line 515
+   at BlazeInspect.Controllers.HomeController.EditProduct(String ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 768

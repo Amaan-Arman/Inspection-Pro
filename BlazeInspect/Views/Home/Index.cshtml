@@ -1,0 +1,219 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null && TempData["trailVerion"] == null)
+{
+    <div class="page" ng-controller="IndexController">
+        @Html.Partial("~/Views/PartialView/PartialViewHeader.cshtml")
+
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="mb-4">
+                            <h4>Welcome to The Inspection Pro!</h4>
+                            <small>Measure How Fast You’re Growing Monthly Recurring Revenue. <a href="#">Learn More</a></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix row-deck">
+                    <div class="col-xl-2 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Total Products</h3>
+                            </div>
+                            <div ng-repeat="c in Gettotalproduct" class="card-body">
+                                <h5 class="number mb-0 font-32 counter">{{c.totalproduct}}</h5>
+                                <span class="font-12"> <a href="@Url.Action("Product", "Home")" @*ng-click="DetailFuntion()"*@>Learn More </a></span>
+                            </div>
+                        </div>
+                    </div>
+                    @if (TempData["login_type"].ToString() == "Admin")
+                    {
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Total Inspector</h3>
+                                </div>
+                                <div ng-repeat="c in Gettotalinspector" class="card-body">
+                                    <h5 class="number mb-0 font-32 counter">{{c.totalinspector}}</h5>
+                                    <span class="font-12"> <a href="@Url.Action("User_access", "Home")">Learn More</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (TempData["login_type"].ToString() == "Inspector")
+                    {
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Complete Inspection</h3>
+                                </div>
+                                <div ng-repeat="c in Gettotalinspector" class="card-body">
+                                    <h5 class="number mb-0 font-32 counter">{{c.totalinspector}}</h5>
+                                    <span class="font-12"> <a href="#">Learn More</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-xl-2 col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Pending Inspection </h3>
+                            </div>
+                            <div ng-repeat="c in GetpendingInspection" class="card-body">
+                                <h5 class="number mb-0 font-32 counter">{{c.pendinginspection}}</h5>
+                                <span class="font-12"> <a href="#" ng-click="DetailFuntion()">Learn More</a></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Todays Inspection</h3>
+                                </div>
+                                <div ng-repeat="c in Getinspectionanalyse" class="card-body">
+                                    <h5 class="number mb-0 font-32 counter">{{c.todayinspection}}</h5>
+                                    <span class="font-12"> <a href="#">Learn More</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Yesterday Inspection</h3>
+                                </div>
+                                <div ng-repeat="c in Getinspectionanalyse" class="card-body">
+                                    <h5 class="number mb-0 font-32 counter">{{c.yesterdayinspection}}</h5>
+                                    <span class="font-12"> <a href="#">Learn More</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Weekly Inspection</h3>
+                                </div>
+                                <div ng-repeat="c in Getinspectionanalyse" class="card-body">
+                                    <h5 class="number mb-0 font-32 counter">{{c.weeklyinspection}}</h5>
+                                    <span class="font-12"> <a href="#">Learn More</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Monthly Inspection</h3>
+                                </div>
+                                <div ng-repeat="c in Getinspectionanalyse" class="card-body">
+                                    <h5 class="number mb-0 font-32 counter">{{c.monthlyinspection}}</h5>
+                                    <span class="font-12"> <a href="#">Learn More</a></span>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+
+                <div class="row clearfix row-deck">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Inspection Analytics</h3>
+                                <div class="card-options">
+                                        <button class="btn btn-sm btn-outline-secondary mr-1" id="one_month">1M</button>
+                                        <button class="btn btn-sm btn-outline-secondary mr-1" id="six_months">6M</button>
+                                        <button class="btn btn-sm btn-outline-secondary mr-1" id="one_year" >1Y</button>
+                                        <button class="btn btn-sm btn-outline-secondary mr-1" id="ytd">YTD</button>
+                                        <button class="btn btn-sm btn-outline-secondary" id="all" class="active">ALL</button>
+                                    </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="apex-timeline-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 ">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Inspection History</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped text-nowrap table-vcenter mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Inspector Name</th>
+                                                <th>Serial Number</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="c in GetInspectionHistory">
+                                                <td>{{index+1}}</td>
+                                                <td>{{c.inspector_name}}</td>
+                                                <td>{{c.SerialNumber}}</td>
+                                                <td>{{c.Date}} | {{c.time}}</td>
+                                                <td><span class="tag" ng-class="{'tag-default': true, 'tag-green': c.Status === 'Green' , 'tag-orange': c.Status === 'Orange','tag-red': c.Status === 'Red'}">{{c.Status}}</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Inspection Status </h3>
+                            </div>
+                            <div id="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+
+            <!--<footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <a href="">The Inspection Pro</a>
+                    </div>-->
+            @*<div class="col-md-6 col-sm-12 text-md-right">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="doc/index.html">Documentation</a></li>
+                        <li class="list-inline-item"><a href="javascript:void(0)">FAQ</a></li>
+                    </ul>
+                </div>*@
+            <!--</div>
+                </div>
+            </footer>-->
+        </div>
+
+    </div>
+    <a title="Start Inspection" target="_blank" href="@Url.Action("QR_code", "Home")" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa fa-plus-circle"></i></a>
+
+    @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+}
+
+<script>
+    $(document).ready(function () {
+        $("#Home").addClass("active");
+    });
+
+</script>
+<script src="~/admin_assets/bundles/lib.vendor.bundle.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/ControllerScripts/IndexController.js"></script>

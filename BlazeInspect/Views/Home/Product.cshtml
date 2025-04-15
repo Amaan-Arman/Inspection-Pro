@@ -1,0 +1,351 @@
+﻿@model BlazeInspect.Models.Product
+
+@{
+    ViewBag.Title = "Product";
+}
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null && TempData["trailVerion"] == null)
+{
+    <div class="page" ng-controller="ProductController">
+        @Html.Partial("~/Views/PartialView/PartialViewHeader.cshtml")
+
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex justify-content-between mb-2">
+                                    <ul class="nav nav-tabs b-none">
+                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i> Product List</a></li>
+                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#Search"><i class="fa fa-list-ul"></i> Product Search</a></li>
+                                        @if ((int)TempData["Product_can_create"] == 1)
+                                        {
+                                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li>
+                                        }
+                                    </ul>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-lg-8 col-md-4 col-sm-6">
+                                        <div class="input-group mb-1">
+                                            <input type="text" class="form-control" placeholder="Category Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-4 col-sm-12">
+                                        <a href="javascript:void(0);" class="btn btn-primary btn-block mb-1" title="">Search</a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="container-fluid">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="list" role="tabpanel">
+                        <div class="row clearfix">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title"> Product list</h3>
+                                        <div class="card-options ">
+                                            @if ((int)TempData["Product_can_print"] == 1)
+                                            {
+                                                <a title="Print" tabindex="-1" href="#" onclick="PrintforReport('Product List', '#ProductExtensionListTableID')"><em class="fa fa-xl fa-print">&nbsp;</em></a>
+                                            }
+                                            @if ((int)TempData["Product_can_report"] == 1)
+                                            {
+                                                <a title="Excel" tabindex="-1" href="#" id="ProductExcelID" onclick="javascript: ExcelFuncntion('#ProductExtensionListTableID', '#ProductExcelID', 'ProductSheet.xls');"><em class="fa fa-xl fa-file-excel-o ">&nbsp;</em></a>
+                                            }
+                                            <a title="Forword To" id="ProductBtn_id" ng-click="IspectorForwardFunction('#InspectorForwordModalBodyId','#InspectorForwordModalID','Assign To')"><i class="fa fa-xl fa-mail-forward" aria-hidden="true"></i></a>
+                                            @if ((int)TempData["Product_can_delete"] == 1)
+                                            {
+                                                <a title="Delete" id="ProductBtn_id" ng-click="ProductDeleteFunction()"><i class="fa fa-xl fa-trash" aria-hidden="true"></i>  </a>
+                                            }
+                                            @if ((int)TempData["Product_can_update"] == 1)
+                                            {
+                                                <a title="Edit" id="ProductBtn_id" ng-click="ProductEditedFunction('#PrductEditModalbodyID','#PrductEditModalID','Product Edit')"><i class="fa fa-xl fa-pencil-square-o" aria-hidden="true"></i>  </a>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive " style="overflow-x: auto; scrollbar-color:lightgray gray; ">
+                                        <table id="ProductExtensionListTableID" class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="5">Product Detail</th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="">&nbsp;</th>
+                                                    @*<th>Actions</th>*@
+                                                    <th>Serial Number</th>
+                                                    <th>Location_</th>
+                                                    <th>Type</th>
+                                                    <th>Capacity</th>
+                                                    <th>Manufacturer</th>
+                                                    <th>Date_of_Manufacture</th>
+                                                    <th>Last Inspection Date</th>
+                                                    <th>Status</th>
+                                                    <th>Remarks</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="c in GetProductList">
+                                                    <td>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" type="checkbox" id="checkbox_id" name="Checkbox" value="{{c.Extinguisher_ID}}">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                        </label>
+                                                    </td>
+                                                    @*<td><a ng-click="ShowQRCode(c.SerialNumber ,'QR Code')">show</a></td>*@
+                                                    @*ng-click="ReportListFunction( c.SerialNumber , 'Report List')"*@
+                                                    <td><span>{{c.SerialNumber}}</span></td>
+                                                    <td><span>{{c.Location_}}</span></td>
+                                                    <td><span>{{c.Type}}  </span></td>
+                                                    <td><span>{{c.Capacity}}</span></td>
+                                                    <td><span>{{c.Manufacturer}} </span></td>
+                                                    <td><span>{{c.Date_of_Manufacture}}  </span></td>
+                                                    <td><span>{{c.Last_Inspection_Date}}  </span></td>
+                                                    <td><span class="tag" ng-class="{'tag-default': true, 'tag-primary': c.Status === 'Completed','tag-yellow': c.Status === 'Pending'}">{{c.Status}}</span></td>
+                                                    @*<td><span class="tag tag-default">{{c.Status}}</span></td>*@
+                                                    <td><span>{{c.Remarks}}  </span></td>
+                                                    <td>{{c.Date}}  </td>
+                                                </tr>
+                                                <tr ng-if="GetProductList == ''">
+                                                    <td class="text-center" colspan="12"><span>No Record Found!</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show " id="Search" role="tabpanel">
+                        <div class="row clearfix">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row ">
+                                            <div class="col-lg-2 col-md-4 col-sm-6 py-2">
+                                                <div class="input-group">
+                                                    <input id="filter_id" type="text" class="form-control" placeholder="Search">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-4 col-sm-6 py-2">
+                                                <div class="input-group">
+                                                    <input id="start_date_id" type="date" class="form-control" data-provide="datepicker" placeholder="Date">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-4 col-sm-6  py-2">
+                                                <div class="input-group">
+                                                    <input id="end_date_id" type="date" class="form-control" data-provide="datepicker" placeholder="Date">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2 col-sm-6  py-2">
+                                                <a ng-click="ProductSearchFunction()" class="btn btn-primary btn-block text-light" title="Search" >Search</a>
+                                            </div>
+                                            @*<div class="col-lg-4 col-md-2 col-sm-6 d-flex justify-content-end">
+                                                    <a title="Excel" tabindex="-1" href="#" id="ProductExcelID" onclick="javascript: ExcelFuncntion('#ProductExtensionListTableID', '#ProductExcelID', 'ProductSheet.xls');"><em class="fa fa-xl fa-file-excel-o ">&nbsp;</em></a>
+                                                    |&nbsp;
+                                                    <a title="Print" tabindex="-1" href="#" onclick="PrintforReport('Product List', '#ProductExtensionListTableID')"><em class="fa fa-xl fa-print">&nbsp;</em></a>
+                                                </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Product list</h3>
+                                        <div class="card-options ">
+                                            @if ((int)TempData["Product_can_print"] == 1)
+                                            {
+                                                <a title="Print" tabindex="-1" href="#" onclick="PrintforReport('Product List', '#ProductExtensionListTableID')"><em class="fa fa-xl fa-print">&nbsp;</em></a>
+                                            }
+                                            @if ((int)TempData["Product_can_report"] == 1)
+                                            {
+                                                <a title="Excel" tabindex="-1" href="#" id="ProductExcelID" onclick="javascript: ExcelFuncntion('#ProductExtensionListTableID', '#ProductExcelID', 'ProductSheet.xls');"><em class="fa fa-xl fa-file-excel-o ">&nbsp;</em></a>
+                                            }
+                                            <a title="Forword To" id="ProductBtn_id" ng-click="IspectorForwardFunction('#InspectorForwordModalBodyId','#InspectorForwordModalID','Assign To')"><i class="fa fa-xl fa-mail-forward" aria-hidden="true"></i></a>
+                                            @if ((int)TempData["Product_can_delete"] == 1)
+                                            {
+                                                <a title="Delete" id="ProductBtn_id" ng-click="ProductDeleteFunction()"><i class="fa fa-xl fa-trash" aria-hidden="true"></i>  </a>
+                                            }
+                                            @if ((int)TempData["Product_can_update"] == 1)
+                                            {
+                                                <a title="Edit" id="ProductBtn_id" ng-click="ProductEditedFunction('#PrductEditModalbodyID','#PrductEditModalID','Product Edit')"><i class="fa fa-xl fa-pencil-square-o" aria-hidden="true"></i>  </a>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive " style="overflow-x: auto; scrollbar-color:lightgray gray; ">
+                                        <table id="ProductExtensionListTableID" class="table table-hover table-striped table-vcenter mb-0 text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="5">Product Detail</th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="">&nbsp;</th>
+                                                    @*<th>Actions</th>*@
+                                                    <th>Serial Number</th>
+                                                    <th>Location_</th>
+                                                    <th>Type</th>
+                                                    <th>Capacity</th>
+                                                    <th>Manufacturer</th>
+                                                    <th>Date_of_Manufacture</th>
+                                                    <th>Last Inspection Date</th>
+                                                    <th>Status</th>
+                                                    <th>Remarks</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="c in ProductSearchList">
+                                                    <td>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input class="custom-control-input" type="checkbox" id="checkbox_id" name="Checkbox" value="{{c.Extinguisher_ID}}">
+                                                            <span class="custom-control-label">&nbsp;</span>
+                                                        </label>
+                                                    </td>
+                                                    @*<td><a ng-click="ShowQRCode(c.SerialNumber ,'QR Code')">show</a></td>*@
+                                                    <td><a ng-click="ReportListFunction( c.SerialNumber , 'Report List')">{{c.SerialNumber}}</a></td>
+                                                    <td><span>{{c.Location_}}</span></td>
+                                                    <td><span>{{c.Type}}  </span></td>
+                                                    <td><span>{{c.Capacity}}</span></td>
+                                                    <td><span>{{c.Manufacturer}} </span></td>
+                                                    <td><span>{{c.Date_of_Manufacture}}  </span></td>
+                                                    <td><span>{{c.Last_Inspection_Date}}  </span></td>
+                                                    <td><span class="tag" ng-class="{'tag-default': true, 'tag-green': c.Status === 'Green' , 'tag-orange': c.Status === 'Orange','tag-red': c.Status === 'Red'}">{{c.Status}}</span></td>
+                                                    @*<td><span class="tag tag-default">{{c.Status}}</span></td>*@
+                                                    <td><span>{{c.Remarks}}  </span></td>
+                                                    <td>{{c.Date}}  </td>
+                                                </tr>
+                                                <tr ng-if="ProductSearchList == ''">
+                                                    <td class="text-center" colspan="12"><span>No Record Found!</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="addnew" role="tabpanel">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Add Product</h3>
+                                        <div class="card-options ">
+                                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fa fa-chevron-up"></i></a>
+                                            @*<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>*@
+                                        </div>
+                                    </div>
+                                    <form class="card-body">
+                                        <div class="row clearfix">
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Serial Number </label>
+                                                    @Html.TextBoxFor(model => model.SerialNumber, new { @class = "form-control fieldwidth", id = "SerialNumber_ID", @tabindex = 1 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Location </label>
+                                                    @Html.TextBoxFor(model => model.Location_, new { @class = "form-control fieldwidth", id = "Location_ID", @tabindex = 2 })
+                                                    @*@Html.DropDownListFor(model => model.SerialNumber, ViewBag.VendornameTypeVB as SelectList, "Select Vendor", new { @class = "form-control chzn-select fieldwidth", @style = "height:45px", id = "vendor_name_id", @tabindex = 1 })*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Type </label>
+                                                    @Html.TextBoxFor(model => model.Type, new { @class = "form-control fieldwidth", id = "Type_ID", @tabindex = 3 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Capacity </label>
+                                                    @Html.TextBoxFor(model => model.Capacity, new { @class = "form-control fieldwidth", id = "Capacity_ID", @tabindex = 4 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Manufacturer </label>
+                                                    @Html.TextBoxFor(model => model.Manufacturer, new { @class = "form-control fieldwidth", id = "manufacturer_ID", @tabindex = 5 })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Date of Manufacture </label>
+                                                    @Html.TextBoxFor(model => model.Date_of_Manufacture, new { @class = "form-control fieldwidth", type = "date", id = "Date_of_Manufacture", @tabindex = 6 })
+                                                </div>
+                                            </div>
+                                            <!--<div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Status </label>
+                                                    <select class="form-control" id="Status">
+                                                        <option selected>Choose...</option>
+                                                        <option>Green</option>
+                                                        <option>Orange</option>
+                                                        <option>Red</option>
+                                                    </select>-->
+                                            @*@Html.TextBoxFor(model => model.Status, new { @class = "form-control fieldwidth", id = "Status", @tabindex = 7 })*@
+                                            <!--</div>
+                                            </div>-->
+                                            @*<div class="col-sm-12">
+                                                    <div class="form-group mt-2 mb-3">
+                                                        <input type="file" class="dropify">
+                                                        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                                                    </div>
+                                                </div>*@
+                                            <div class="col-sm-12">
+                                                <div class="form-group mt-3">
+                                                    <label>Remarks</label>
+                                                    @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control  no-resize ", rows = "4", id = "Remarks", placeholder = "Please type what you want...", @tabindex = 8 })
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <button type="submit" ng-click="ProductInsertionFunction()" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+
+
+    </div>
+
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewModalsValidation.cshtml")
+}
+<script>
+    $(document).ready(function () {
+        $("#Product").addClass("active");
+
+    });
+</script>
+
+
+<script src="~/admin_assets/bundles/lib.vendor.bundle.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+<script src="~/signalr/hubs"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/ControllerScripts/ProductController.js"></script>
+
+
+@*<script src="~/admin_assets/plugins/dropify/js/dropify.min.js"></script>
+    <script src="~/admin_assets/js/form/dropify.js"></script>*@

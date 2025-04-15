@@ -1,0 +1,70 @@
+9/16/2024 9:43:20 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156
+9/16/2024 9:48:32 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156
+9/16/2024 10:22:07 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156
+9/16/2024 10:51:30 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156
+9/16/2024 10:52:28 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156
+9/16/2024 10:52:50 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156
+9/16/2024 11:12:10 PM : System.FormatException: Invalid point encoding 110
+   at Org.BouncyCastle.Math.EC.ECCurve.DecodePoint(Byte[] encoded) in C:\projects\bc-csharp\crypto\src\math\ec\ECCurve.cs:line 463
+   at Org.BouncyCastle.Asn1.X9.X9ECPoint.get_Point() in C:\projects\bc-csharp\crypto\src\asn1\x9\X9ECPoint.cs:line 51
+   at Org.BouncyCastle.Security.PublicKeyFactory.CreateKey(SubjectPublicKeyInfo keyInfo) in C:\projects\bc-csharp\crypto\src\security\PublicKeyFactory.cs:line 141
+   at Org.BouncyCastle.OpenSsl.PemReader.ReadObject() in C:\projects\bc-csharp\crypto\src\openssl\PEMReader.cs:line 87
+   at WebPush.Util.ECKeyHelper.GetPublicKey(Byte[] publicKey)
+   at WebPush.Util.Encryptor.Encrypt(Byte[] userKey, Byte[] userSecret, Byte[] payload)
+   at WebPush.WebPushClient.GenerateRequestDetails(PushSubscription subscription, String payload, Dictionary`2 options)
+   at WebPush.WebPushClient.SendNotification(PushSubscription subscription, String payload, Dictionary`2 options)
+   at BlazeInspect.Controllers.HomeController.SendNotificationToAllUsers(String message, Int32 ID) in G:\Support data\Amaan\personal project\QR_code project\BlazeInspect\BlazeInspect\Controllers\HomeController.cs:line 156

@@ -1,0 +1,45 @@
+﻿@model BlazeInspect.Models.login
+@{
+    ViewBag.Title = "PartialViewFileManager";
+    Layout = null;
+}
+
+
+@if (TempData["DbVarification"] == null && TempData["NetVarification"] == null)
+{
+    <div class="row" ng-controller="FileManagerController">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="form-group">
+                <label>User List</label>
+                <div class="dropdown-sin-2">
+                    <select id="userDropdown" multiple placeholder="Select">
+                        @foreach (var user in ViewBag.InspectorListVB)
+                        {
+                            <option value="@user.Value">@user.Text</option>
+                        }
+                    </select>
+                </div>
+
+                @*@Html.DropDownListFor(model => model.user_credential_id, ViewBag.InspectorListVB as SelectList, "Inspector List", new { @class = "form-control ", id = "cc_Forward_to" , @tabindex = 1 })*@
+                <span id="cc_Forward_to_errormessage" class="small text-danger"></span>
+            </div>
+        </div>
+    </div>
+    @*<script src="~/Scripts/jquery-3.7.1.min.js"></script>*@
+        <link href="~/admin_assets/dropdown/jquery.dropdown.css" rel="stylesheet" />
+        <script src="~/admin_assets/dropdown/jquery.dropdown.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Initialize the dropdown using your plugin
+                $('.dropdown-sin-2').dropdown({
+                    input: '<input type="text" placeholder="Search">'
+                });
+            });
+           
+
+        </script>
+}
+else
+{
+    @Html.Partial("~/Views/Shared/PartialViewInternetConnection.cshtml")
+}
