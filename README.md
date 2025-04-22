@@ -27,7 +27,8 @@
 ---
 
 ## 📷 Screenshots
-
+![Screenshot_22-4-2025_142114_localhost](https://github.com/user-attachments/assets/a941ed35-412e-45ba-b82c-e4ec7460d0cc)
+![Screenshot_22-4-2025_14185_localhost](https://github.com/user-attachments/assets/7d41426e-d07d-40fe-8f94-3ba9f7cfc7f7)
 
 
 ---
@@ -47,3 +48,21 @@
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Amaan-Arman/Inspection-Pro.git
+   
+ 2. **Open in Visual Studio**
+    
+ 3. **Restore NuGet Packages**
+   Right-click on solution > "Restore NuGet Packages"
+ 
+ 4. **Configure Database**  
+   Update your SQL Server connection string in Web.config
+
+ 5. **Run the Project**  
+   Press F5 or click "Start"
+
+---
+
+## 👤 Author
+Amman Arman
+📧 Email: amaanarman99@gmail.com
+🔗 GitHub: github.com/Amaan-Arman
