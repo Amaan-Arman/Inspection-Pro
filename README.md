@@ -1,6 +1,6 @@
 # 🔎 Inspection-Pro
 
-**Inspection Pro** is a powerful QR-code-based product inspection system built with ASP.NET MVC. It helps streamline quality inspections, generate reports, analyze results via dashboards, and enables real-time team communication.
+**Inspection Pro** is an AI-powered smart inspection system to modernize industrial inspections in sectors such as fire safety and automotive. This scalable web-based solution enhances efficiency, accuracy, and collaboration by leveraging advanced technologies like AI chatbots, real-time communication, and dynamic reporting.
 
 ---
 
